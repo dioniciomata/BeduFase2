@@ -220,23 +220,42 @@
 // countDown(3);
 
 
-// Tips: use typeof(), strictly equal ===, Object.keys(), Object.values()
+// Tips: use typeof(), strictly equal ===, Object.keys()
 
 function deepEqual(a, b) {
-    // Code goes here, are a and b equal? True / False
-    console.log(Object.keys(a), Object.keys(b))
-    if (typeof(a) === typeof(b)){
+    console.log(a)
+    console.log(b)
+    if (a===b){return true}
+    else if (typeof(a)==="object" && typeof(b)==="object"){
+        console.log(`${b} and ${a} are objects`)
+       let keysa = Object.keys(a)
+       let keysb = Object.keys(b)
+       console.log(`${keysa} and ${keysb}`)
+       let banner = true;
+            for (let i = 0; i < keysa.length; i++) {
+                if (!deepEqual(keysa[i], keysb[i])){
+                    banner = false
+                } 
+                console.log(`keysa[i] is ${keysa[i]} and keysb[i] is ${keysb[i]}`)
+            }
+            return banner;
+       }
+    else {
+        console.log(`${b} or ${a} is not an object, or they're not equal`)
+        return false
+    }
+}
+        
+        
 
-    } else return false;
-   }
-   
-   const john = {
+
+const john = {
     firstName: 'John',
     lastName: 'Doe'
-   }
+}
    
-   console.log('Test 1:', deepEqual(1, 1)) // true
-   console.log('Test 2:', deepEqual(1, '1')) // false
-   console.log('Test 3:', deepEqual(john, john)) // true
-   console.log('Test 4:', deepEqual(john, { firstName: 'John', lastName: 'Doe' })) // true
-   console.log('Test 5:', deepEqual(john, { firstName: 'John' })) // false
+//    console.log('Test 1:', deepEqual(1, 1)) // true
+//    console.log('Test 2:', deepEqual(1, '1')) // false
+//    console.log('Test 3:', deepEqual(john, john)) // true
+//    console.log('Test 4:', deepEqual(john, { firstName: 'John', lastName: 'Doe' })) // true
+//    console.log('Test 5:', deepEqual(john, { firstName: 'John' })) // false
