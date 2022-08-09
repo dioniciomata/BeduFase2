@@ -56,16 +56,31 @@
 // const nuevaFruta = new Especie("manzana", "roja", "gala")
 // console.log(nuevaFruta);
 
+// const Fish = function(size){
+//     this.size = size;
+// }
+
+// const shark = new Fish("big");
+// console.log(shark)
+
+// const Dolphin = function(color, eats, size){
+//     Fish.call(this, size)
+//     this.color = color;
+//     this.eats = eats;
+// }
+
+// const pinkDolphin = new Dolphin("pink", "plankton", "medium")
+// console.log(pinkDolphin)
 
 // const Group = function() {
 //     this.members = []
 // }
 // const grupo = new Group();
-// console.log(grupo)
+// // console.log(grupo)
 // Group.prototype.has = function(value){
 //     return this.members.includes(value);
 // }
-// console.log(grupo.has(1))
+// // console.log(grupo.has(1))
 // Group.prototype.add = function(nuevo){
 //     if (!this.has(nuevo)){
 //         return this.members.push(nuevo)
@@ -73,11 +88,15 @@
 // }
 // grupo.add(1);
 // grupo.add(2)
-// console.log(grupo)
+// // console.log(grupo)
 // Group.from = function(array){
 //     let group = new Group();
-//     group.add(array);
-//     console.log(group)
+//     for (let i of array) {
+//         console.log(i)
+//         group.add(i);
+//     }
+   
+//     // console.log(group)
 //     return group
 // }
 // // Group.from = function(array){
@@ -90,23 +109,46 @@
 // console.log(group.has(5)); // true
 // console.log(group.has(10)); // false
 // group.add(10);
+// console.log(group)
 // console.log(group.has(10)); // true
 
 
-class Manzana {
-    constructor(fruit, color, race){
-        this.fruit = fruit;
-        this.color = color;
-        this.race = race;
-    }
+// class Family {
+//     constructor(brothers, sisters, parents, grandparents){
+//         this.brothers = brothers;
+//         this.sisters = sisters;
+//         this.parents = parents;
+//         this.grandparents = grandparents;
+//     }
 
-    readIt(){
-        let result;
-        result = `Esta ${this.fruit} es de color ${this.color} y especie ${this.race}`
-        return result
-        }
-}
+//     howManySiblings(brothers, sisters){
+//         return this.brothers + this.sisters
+//     }
 
-let nuevaFruta = new Manzana("manzana", "roja", "gala");
-// console.log(nuevaFruta)
-console.log(nuevaFruta.readIt());
+//     howManyParents(){
+//         return this.grandparents + this.parents
+//     }
+// }
+
+// const mata = new Family(2, 4, 2, 1)
+// console.log(mata)
+// console.log(mata.howManySiblings())
+// console.log(mata.howManyParents())
+
+// class Manzana {
+//     constructor(fruit, color, race){
+//         this.fruit = fruit;
+//         this.color = color;
+//         this.race = race;
+//     }
+
+//     readIt(){
+//         let result;
+//         result = `Esta ${this.fruit} es de color ${this.color} y especie ${this.race}`
+//         return result
+//         }
+// }
+
+// let nuevaFruta = new Manzana("manzana", "roja", "gala");
+// // console.log(nuevaFruta)
+// console.log(nuevaFruta.readIt());

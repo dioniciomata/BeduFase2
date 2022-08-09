@@ -105,14 +105,44 @@
 // console.log(createPhoneNumber([1, 2, 3, "a", 53, "e", 7, 8, 9, 0])); // "error: alguno de los números tiene màs de un digito, o no es un numero"
 
 
+//La función debe retornar un nuevo arreglo con los elementos faltantes del primer arreglo.
 function findMissingNumbers (arreglo){
     arreglo.sort(function(a, b){return a-b});
-    let faltan= [];
-    for (let i = arreglo[0]; i < arreglo.length; i++) {
-        for (let j = arreglo[0]; j < arreglo.length; i++) {
-            if (i)
-        }
+
+    let faltan = [];
+
+    let todos = [];
+    for (var i = arreglo[0]; i <= arreglo[arreglo.length-1]; i++) {
+        // console.log(i)
+        todos.push(i)       
     }
+    // console.log(todo)
+    for (let todo of todos) {
+       
+
+        for (var falta of arreglo){
+            var Falta = true ;
+
+            // console.log(`todo es ${todo} y falta es ${falta}`)
+            if (falta === todo){
+                // console.log("coinciden, break")
+                Falta = false;
+                break;
+            } 
+            // console.log("Aún falta "+Falta + `- Todo es ${todo} y falta es ${falta}`)
+            if (falta === arreglo[arreglo.length-1] && Falta === true){
+                console.log("Reached last falta")
+                faltan.push(todo)
+            }
+            // if we reach the last falta and Falta is true, add to faltan
+        }
+        
+        
+    } 
+    
+console.log(faltan)
+    return console.log("function is over");
+
 }
 
 findMissingNumbers([2, 1, 9, 5, 7, 3, 10]); // [4, 6, 8]
