@@ -259,3 +259,114 @@ const john = {
 //    console.log('Test 3:', deepEqual(john, john)) // true
 //    console.log('Test 4:', deepEqual(john, { firstName: 'John', lastName: 'Doe' })) // true
 //    console.log('Test 5:', deepEqual(john, { firstName: 'John' })) // false
+
+
+// // Escribir una función chunk que recibe un arreglo y un número entero size. La función debe dividir el arreglo en múltiples arreglos del tamaño determinado por size.
+
+// function chunk(array, size) {
+
+//   // Code goes here
+
+//   let arreglo = [];
+
+//   let instacia = [];
+
+ 
+
+//   for (let i = 0; i < array.length; i++) {
+
+//     instacia.push(array[i])
+
+//     if (instacia.length%size===0){
+
+//       arreglo.push(instacia)
+
+//       instacia = [];
+
+//     }
+
+//   }
+
+//   if (!instacia.length%size===0 && instacia.length>0){
+
+//     arreglo.push(instacia)
+
+//   }
+
+ 
+
+//   return arreglo;
+
+// };
+
+ 
+
+// const data = [1, 2, 3, 4, 5, 6, 7, 8]
+
+ 
+
+// console.log('Test 1:', chunk(data, 1)) // [[1], [2], [3], [4], [5], [6], [7], [8]]
+
+// console.log('Test 2:', chunk(data, 2)) // [[1, 2], [3, 4], [5, 6], [7, 8]]
+
+// console.log('Test 3:', chunk(data, 3)) // [[1, 2, 3], [4, 5, 6], [7, 8]]
+
+ 
+
+// Escribir una función frequency que recibe un string como argumento. Esta función debe contar la frecuencia o el número de veces que se repite cada carácter. El resultado debe mostrarse en un objeto donde las propiedades sean los caracteres, y los valores sean la frecuencia. Los resultados deben ordenarse de manera ascendente por los caracteres y no la frecuencia.
+
+ 
+
+function frequency(string) {
+
+    let objeto= {};
+  
+      for (let i = 0; i < string.length; i++) {
+  
+        let element = string[i]
+  
+      //   console.log(element)
+  
+          if (objeto[element]>=1){
+  
+            objeto[element]++;
+  
+          } else {
+  
+            objeto[element] = 1;
+  
+          // console.log(objeto)
+  
+          }
+  
+      }
+  
+    const sorted = Object.keys(objeto)
+  
+    .sort()
+  
+    .reduce((accumulator, key) => {
+  
+      accumulator[key] = objeto[key];
+  
+      return accumulator;
+  
+    }, {});
+  
+    return sorted;
+  
+   }
+  
+   
+  
+   console.log('Test 1:', frequency('cccbbbaaa'))
+  
+   // {a: 3, b: 3, c: 3}
+  
+   console.log('Test 2:', frequency('www.bedu.org'))
+  
+   // {.: 2, b: 1, d: 1, e: 1, g: 1, o: 1, r: 1, u: 1, w: 3}
+  
+   console.log('Test 3:', frequency('john.doe@domain.com'))
+  
+   // {.: 2, @: 1, a: 1, c: 1, d:
