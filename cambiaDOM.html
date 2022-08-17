@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <!-- <p>One</p>
+    <p>Two</p>
+    <p>Three</p> -->
+    <h1></h1>
+<script>
+    // const paragraphs = document.body.getElementsByTagName("p");
+    // console.log("colección de nodos ", paragraphs.length);
+    // console.log("primer nodo", paragraphs[0])
+    // console.log("segundo nodo", paragraphs[1])
+    // console.log("tercer nodo", paragraphs[2])
+    // document.body.insertBefore(paragraphs[2], paragraphs[1])
+    const h1 = document.createElement("h1");
+    console.log(h1)
+    const text = document.createTextNode("Hello")
+    h1.appendChild(text)
+    // document.body.appendChild(h1.appendChild(text))
+    function createNode(type, child) {
+        const node = document.createElement(type);
+        const text = document.createTextNode(child);
+
+        node.appendChild(text);
+
+        return node;
+    }
+    console.log(createNode("h1", "Hello dio"))
+    console.log(createNode("h1", createNode("strong", "Fuerte text")))
+</script>
+</body>
+</html>

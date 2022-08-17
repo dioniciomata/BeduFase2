@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="utf8" />
+    <title>Reto 1: Reemplazar Imágenes</title>
+  </head>
+  <body>
+    <h1 class="titulo">Images</h1>
+
+    <img src="https://picsum.photos/200/300" alt="First Image"/>
+    <img src="https://picsum.photos/200/300" alt="Second Image"/>
+    <img src="https://picsum.photos/200/300" alt="Third Image"/>
+
+    <script>
+      // Reemplazar todas las imágenes del documento (etiquetas <img/>) con el texto que contienen en el atributo alt.
+     
+        var images = document.getElementsByTagName("img");
+        console.log(images);
+
+        for (var i = images.length-1; i >= 0; i--) {
+            var image = images[i];
+            if (image.alt){
+                let text = document.createTextNode(image.alt);
+                image.parentNode.replaceChild(text, image)
+            }
+        }
+
+      
+    </script>
+  </body>
+</html>

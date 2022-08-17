@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <meta charset="utf8" />
+    <title>Reto 2: Crear una tabla</title>
+  </head>
+  <body>
+    <h1>Mountains</h1>
+
+    <div id="mountains">
+        <!-- <table>
+            <tr>
+                <th>name</th>
+                <th>height</th>
+                <th>place</th>
+            </tr>
+            <tr>
+                <td>Kilimanjaro</td>
+                <td>5895</td>
+                <td>Tanzania</td>
+            </tr>
+        </table> -->
+    </div>
+
+    <script>
+      const data = [
+        {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
+        {name: "Everest", height: 8848, place: "Nepal"},
+        {name: "Mount Fuji", height: 3776, place: "Japan"},
+        {name: "Vaalserberg", height: 323, place: "Netherlands"},
+        {name: "Denali", height: 6168, place: "United States"},
+        {name: "Popocatepetl", height: 5465, place: "Mexico"},
+        {name: "Mont Blanc", height: 4808, place: "Italy/France"}
+      ];
+
+      function createNode(type, child){
+        
+        const node = document.createElement(type);
+ 
+        if (typeof child === "string"){
+         const text = document.createTextNode(child);
+         node.appendChild(text);
+        } else {
+         node.appendChild(child);
+        }
+        return node;
+ 
+     }
+
+    function buildTable(data){
+     let table = document.createElement("table");
+     const fields = ["Name", "Height", "Place"]
+     let headRow = document.createElement("tr")
+
+     fields.forEach(function(field){
+        let headCell = document.createElement("th")
+        headCell.appendChild(document.createTextNode(field))
+        headRow.appendChild(headCell)
+     })
+
+     table.appendChild(headRow)
+    }
+     
+    document.getElementById("mountains")
+        .appendChild(buildTable(data))
+
+    //  for (let i = data.length-1; i >= 0; i--) {
+        
+    //  }
+
+     
+    //  console.log(table)
+    //  table.appendChild(createNode("tr", createNode("td", "hello")))
+    </script>
+  </body>
+</html>
