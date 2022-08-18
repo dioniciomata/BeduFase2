@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sesion 10</title>
+</head>
+<body>
+    <!-- Lo clicks en el botón ejecutarán la función handler pero los clicks en los párrafos no. -->
+    <!-- <p>No handler here.</p>
+    <button>Click me</button>
+    <p>No handler here.</p>
+    <button>Click me</button>
+    <script>
+      const button = document.querySelector("button");
+      button.addEventListener("click", () => {
+        console.log("Button clicked.");
+      });
+    </script> -->
+
+    <!-- También podemos eliminar handlers que hayamos creado con anterioridad usando el método removeEventListener. -->
+    <!-- <button>Click me</button>
+    <script>
+    const button = document.querySelector("button");
+    function once() {
+        console.log("Click once");
+        button.removeEventListener("click", once);
+    }
+    button.addEventListener("click", once);
+    </script> -->
+    
+    <!-- // EVENTOS EN NODOS DEL DOM -->
+    <!-- <h1 id="title">Hello World</h1>
+    <button id="red">Red</button>
+    <button id="blue">Blue</button>
+    <button id="black">Black</button>
+    <script>
+      const title = document.getElementById('title');
+      const redButton = document.getElementById('red');
+      const blueButton = document.getElementById('blue');
+      const blackButton = document.getElementById('black');
+      redButton.addEventListener("click", function() {
+        title.style = "color: red;";
+      });
+      blueButton.addEventListener("click", function() {
+        title.style = "color: blue;";
+      });
+      blackButton.addEventListener("click", function() {
+        title.style = "color: black;";
+      });
+    </script> -->
+
+    <!-- THE EVENT OBJECT -->
+    <!-- <button>Click Here</button>
+    <script>
+      const button = document.querySelector("button");
+
+      button.addEventListener("mousedown", function(event) {
+        if (event.button == 0) {
+          console.log("Left button");
+        } else if (event.button == 1) {
+          console.log("Middle button");
+        } else if (event.button == 2) {
+          console.log("Right button");
+        }
+      });
+    </script> -->
+  
+  <!-- información contenida en el event object para manipular el DOM -->  
+  <!-- <h1 id="title">Hello World!</h1>
+  <input type="text" id="text" />
+  <script>
+    const title = document.getElementById('title');
+    const input = document.getElementById('text');
+    input.addEventListener("input", function(event) {
+      title.textContent = event.target.value;
+    });
+  </script> -->
+
+  <!-- Key events  -->
+  <h2>Press Enter to turn this page blue.</h2>
+  <h2>Press Ctrl + Enter to turn this page orange.</h2>
+
+  <script>
+    window.addEventListener("keydown", function (event) {
+      if (event.key == "Enter") {
+        document.body.style.background = "lightblue";
+      }
+      if (event.key == "Enter" && event.ctrlKey) {
+          document.body.style.background = "orange";
+      }
+    });
+      window.addEventListener("keyup", function (event) {
+      if (event.key == "Enter") {
+        document.body.style.background = "";
+      }
+     });
+  </script> 
+
+</body>
+</html>
