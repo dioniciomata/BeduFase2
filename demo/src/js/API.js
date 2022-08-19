@@ -69,3 +69,11 @@ function logValue(){
     let newValue = document.getElementById("nameSearch").value;
     console.log(newValue)
 }
+
+// Deshabilitar el uso de enter
+function disableEnter(event){
+    if (event.key === "Enter"){
+        event.preventDefault();
+    }
+}
+window.addEventListener("keydown", disableEnter);
