@@ -31,12 +31,13 @@
 
     }
 
-    // console.log(createNode('h1', 'Hello World')); // <h1>Hello World</h1>
-    // console.log(createNode('h1', createNode('strong', 'Hello World')));
-    // document.getElementById("quote")
-    // .appendChild(
-    //     createNode("footer", createNode("strong", "- Karl Popper"))
-    // )
+    console.log(createNode('h1', 'Hello World')); // <h1>Hello World</h1>
+    document.body.appendChild(createNode('p', createNode('strong', 'Hello World')));
+    document.body.appendChild(createNode("div", createNode("p", createNode("strong", "hi")) ))
+    document.getElementById("quote")
+    .appendChild(
+        createNode("footer", createNode("strong", "- Karl Popper"))
+    )
         const link = document.getElementById("link");
         console.log(link)
 

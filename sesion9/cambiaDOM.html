@@ -18,10 +18,7 @@
     // console.log("segundo nodo", paragraphs[1])
     // console.log("tercer nodo", paragraphs[2])
     // document.body.insertBefore(paragraphs[2], paragraphs[1])
-    const h1 = document.createElement("h1");
-    console.log(h1)
-    const text = document.createTextNode("Hello")
-    h1.appendChild(text)
+  
     // document.body.appendChild(h1.appendChild(text))
     function createNode(type, child) {
         const node = document.createElement(type);
@@ -31,8 +28,14 @@
 
         return node;
     }
-    console.log(createNode("h1", "Hello dio"))
-    console.log(createNode("h1", createNode("strong", "Fuerte text")))
+
+    document.body.appendChild(createNode("h1", "Hello dio"))
+    console.log( createNode("h1", createNode("strong", "Fuerte text")))
+    document.body.appendChild(createNode("h1", "Hello"))
+    document.body.appendChild(createNode("div", "Hola"))
+    document.querySelector("div").className = "parrafo";
+    document.querySelector("div").id = "unique";
+    document.body.lastChild.appendChild(createNode("p", "p dentro de div"))
 </script>
 </body>
 </html>
