@@ -1,0 +1,181 @@
+<html>
+<head>
+  <meta charset="utf8"/>
+  <title>Inflar un globo, Modal, Tabs</title>
+</head>
+<body>
+
+<!-- RETO 1, INFLAR UN GLOBO -->
+<!-- <p>🎈</p>
+<script>
+    // valor inicial font-size: 20px.
+    
+    const p = document.querySelector("p");
+    const valorInicial = 20;
+    p.style.fontSize = valorInicial;
+    let i = parseInt( p.style.fontSize );
+
+  // inflarse un 10% al presionar arriba y desinflarse al presionar abajo. ArrowUp ArrowDown
+    window.addEventListener("keydown",inflar);
+    function inflar(event) {
+    if (event.key == "ArrowUp" && parseInt(p.style.fontSize) <= 80) {
+        p.style.fontSize = i + 2;
+        i=i+2;
+        // console.log(p.style.fontSize)
+        };
+    };
+    window.addEventListener("keydown", desinflar);
+    function desinflar (event) {
+    if (event.key == "ArrowDown" && parseInt(p.style.fontSize) > 0) {
+        p.style.fontSize = i - 2;
+        i=i-2;
+        // console.log(p.style.fontSize)
+        };
+    };
+
+  // preventDefault() evitar scroll
+    window.addEventListener("keydown", prevent);
+    function prevent(event) {
+        if (event.key == "ArrowUp" || event.key == "ArrowDown") {
+            event.preventDefault();
+            // console.log("default prevented")
+            
+            };
+        };
+  // mayor a 80px, emoji 💥 y eliminar el event handler
+    window.addEventListener("keydown", explode);
+    function explode(event) {
+        if (event.key == "ArrowUp" || event.key == "ArrowDown") {
+            console.log(parseInt(p.style.fontSize))
+            if (parseInt(p.style.fontSize) > 80){
+                p.innerHTML = "💥" ;
+                window.removeEventListener("keydown", desinflar);
+                window.removeEventListener("keydown", inflar);
+                window.removeEventListener("keydown", prevent);
+                window.removeEventListener("keydown", explode);
+            }
+            };
+        };
+
+</script> -->
+
+
+<!-- RETO 2 Modal -->
+<!-- <style>
+    #modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+  
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+    }
+  
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+  
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+</style>
+  
+  <h1>Modal</h1>
+  
+  <button>Open modal</button>
+  
+  <div id="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-image"/>
+  </div>
+  
+<script>
+    // default display: none; al hacer click, mostrar un modal con una imagen  https://picsum.photos/300/200  imagen aleatoria
+    let button = document.querySelector("button");
+    let modal = document.getElementById("modal");
+    
+    function mostrar(){
+        console.log("button clicked");
+        document.getElementById("modal-image").src="https://picsum.photos/300/200";
+        modal.style.display = "inline";
+    }
+    button.addEventListener("click", mostrar);
+
+    // X debe cerrar el modal.
+    let equis = document.getElementsByClassName("close");
+    function cerrar(){
+        console.log("cerrar clicked");
+        modal.style.display = "none";
+        document.getElementById("modal-image").src="";
+    };
+    equis[0].addEventListener("click", cerrar);
+</script> -->
+
+
+<!-- RETO 3 NAVEGAR ENTRE TABS -->
+<div id="tab-panel">
+    <div data-tabname="First">Tab one</div>
+    <div data-tabname="Second">Tab two</div>
+    <div data-tabname="Third">Tab three</div>
+  </div>
+  
+  <script>
+      buttonFirst = document.createElement("button");
+        buttonSec = document.createElement("button");
+       buttonThi = document.createElement("button");
+    function createTabs(node) {
+        // esconder children 
+        const children = document.getElementById("tab-panel").children;
+        const lineaUno = children[0];
+        const lineaDos = children[1];
+        const lineaTres = children[2];
+        lineaUno.style.display = "block";
+        lineaDos.style.display = "none";
+        lineaTres.style.display = "none";
+      // recibe un nodo del DOM, genera una interfaz de tabs de navegación <button class="first">First</button>
+      
+      const first = document.createTextNode("First");
+      const second = document.createTextNode("Second");
+      const third = document.createTextNode("Third");
+
+      buttonFirst.className = "first";
+      buttonSec.className = "second";
+      buttonThi.className = "third";
+
+      buttonFirst.appendChild(first);
+      buttonSec.appendChild(second);
+      buttonThi.appendChild(third);
+
+      let panel = document.getElementById("tab-panel");
+      document.getElementById("tab-panel").appendChild(buttonFirst);
+      document.getElementById("tab-panel").appendChild(buttonSec);
+      document.getElementById("tab-panel").appendChild(buttonThi);
+    }
+    createTabs()
+    console.log(typeof(buttonFirst));
+    
+    </script>
+
+</body>
+</html>
