@@ -22,54 +22,75 @@
     </div>
 
     <script>
-      const data = [
-        {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
-        {name: "Everest", height: 8848, place: "Nepal"},
-        {name: "Mount Fuji", height: 3776, place: "Japan"},
-        {name: "Vaalserberg", height: 323, place: "Netherlands"},
-        {name: "Denali", height: 6168, place: "United States"},
-        {name: "Popocatepetl", height: 5465, place: "Mexico"},
-        {name: "Mont Blanc", height: 4808, place: "Italy/France"}
-      ];
+        const data = [
+          {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
+          {name: "Everest", height: 8848, place: "Nepal"},
+          {name: "Mount Fuji", height: 3776, place: "Japan"},
+          {name: "Vaalserberg", height: 323, place: "Netherlands"},
+          {name: "Denali", height: 6168, place: "United States"},
+          {name: "Popocatepetl", height: 5465, place: "Mexico"},
+          {name: "Mont Blanc", height: 4808, place: "Italy/France"}
+        ];
 
-      function createNode(type, child){
-        
-        const node = document.createElement(type);
- 
-        if (typeof child === "string"){
-         const text = document.createTextNode(child);
-         node.appendChild(text);
-        } else {
-         node.appendChild(child);
+        // create HTMLResponse node
+        const mountains = document.getElementById("mountains");
+
+        //createNode function
+        function createNode(type, child){
+          const node = document.createElement(type);
+          if (typeof child === "string"){
+          const text = document.createTextNode(child);
+          node.appendChild(text);
+          } else {
+          node.appendChild(child);
+          }
+          return node;
         }
-        return node;
- 
-     }
 
-    function buildTable(data){
-     let table = document.createElement("table");
-     const fields = ["Name", "Height", "Place"]
-     let headRow = document.createElement("tr")
+        // pass an array of objects to build a table
+        function buildTable(data){
+          let table = document.createElement("table");
+          const fields = ["Name", "Height", "Place"];
+          let headRow = document.createElement("tr");
 
-     fields.forEach(function(field){
-        let headCell = document.createElement("th")
-        headCell.appendChild(document.createTextNode(field))
-        headRow.appendChild(headCell)
-     })
+          // fields.forEach(function(field){
+          //     let headCell = document.createElement("th")
+          //     headCell.appendChild(document.createTextNode(field))
+          //     headRow.appendChild(headCell)
+          // });
 
-     table.appendChild(headRow)
-    }
+            // create and append header row
+            for (const field of fields) {
+              let headCell = document.createElement("th")
+              headCell.appendChild(document.createTextNode(field))
+              headRow.appendChild(headCell)
+            }
+            table.appendChild(headRow);
+
+            // create one row for each object in array
+            for (const mountain of data) {
+              let row = document.createElement("tr");
+              const valores = Object.values(mountain);
+              // console.log(valores); // ['Kilimanjaro', 5895, 'Tanzania']
+
+              // create one cell for each value
+              valores.forEach(function(valor){
+                console.log(valor)
+                let cell = document.createElement("td")
+                cell.appendChild(document.createTextNode(valor))
+                row.appendChild(cell);
+              });
+              table.appendChild(row);
+            }
+
+
+          // console.log(data, fields, headRow, table)
+
+          return table;
+        }
+      
+        mountains.appendChild(buildTable(data))
      
-    document.getElementById("mountains")
-        .appendChild(buildTable(data))
-
-    //  for (let i = data.length-1; i >= 0; i--) {
-        
-    //  }
-
-     
-    //  console.log(table)
-    //  table.appendChild(createNode("tr", createNode("td", "hello")))
-    </script>
+      </script>
   </body>
 </html>
