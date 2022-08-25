@@ -135,46 +135,82 @@
 
 <!-- RETO 3 NAVEGAR ENTRE TABS -->
 <div id="tab-panel">
-    <div data-tabname="First">Tab one</div>
-    <div data-tabname="Second">Tab two</div>
-    <div data-tabname="Third">Tab three</div>
-  </div>
+  <div data-tabname="First">Tab one</div>
+  <div data-tabname="Second">Tab two</div>
+  <div data-tabname="Third">Tab three</div>
+</div>
   
-  <script>
+    <script>
       buttonFirst = document.createElement("button");
-        buttonSec = document.createElement("button");
-       buttonThi = document.createElement("button");
-    function createTabs(node) {
-        // esconder children 
-        const children = document.getElementById("tab-panel").children;
-        const lineaUno = children[0];
-        const lineaDos = children[1];
-        const lineaTres = children[2];
-        lineaUno.style.display = "block";
-        lineaDos.style.display = "none";
-        lineaTres.style.display = "none";
-      // recibe un nodo del DOM, genera una interfaz de tabs de navegación <button class="first">First</button>
-      
-      const first = document.createTextNode("First");
-      const second = document.createTextNode("Second");
-      const third = document.createTextNode("Third");
+      buttonSec = document.createElement("button");
+      buttonThi = document.createElement("button");
 
       buttonFirst.className = "first";
       buttonSec.className = "second";
       buttonThi.className = "third";
 
-      buttonFirst.appendChild(first);
-      buttonSec.appendChild(second);
-      buttonThi.appendChild(third);
+      // esconder children 
+      const children = document.getElementById("tab-panel").children;
+      const lineaUno = children[0];
+      const lineaDos = children[1];
+      const lineaTres = children[2];
+      lineaUno.style.display = "block";
+      lineaDos.style.display = "none";
+      lineaTres.style.display = "none";
 
-      let panel = document.getElementById("tab-panel");
-      document.getElementById("tab-panel").appendChild(buttonFirst);
-      document.getElementById("tab-panel").appendChild(buttonSec);
-      document.getElementById("tab-panel").appendChild(buttonThi);
-    }
-    createTabs()
-    console.log(typeof(buttonFirst));
-    
+      function createTabs() {
+          // recibe un nodo del DOM, genera una interfaz de tabs de navegación <button class="first">First</button>
+
+          const textArray = document.getElementById("tab-panel").children;
+          
+          const first = document.createTextNode(textArray[0].dataset.tabname);
+          const second = document.createTextNode(textArray[1].dataset.tabname);
+          const third = document.createTextNode(textArray[2].dataset.tabname);
+
+          buttonFirst.appendChild(first);
+          buttonSec.appendChild(second);
+          buttonThi.appendChild(third);
+
+          let panel = document.getElementById("tab-panel");
+          document.getElementById("tab-panel").insertBefore(buttonThi, panel.firstChild);
+          document.getElementById("tab-panel").insertBefore(buttonSec, panel.firstChild);
+          document.getElementById("tab-panel").insertBefore(buttonFirst, panel.firstChild);
+        }
+
+      createTabs()
+
+      console.log(document.getElementsByClassName("first")[0]);
+
+      function primera(){
+        console.log("function primera running");
+        buttonFirst.style.color = "red";
+        lineaUno.style.display = "block";
+        lineaDos.style.display = "none";
+        lineaTres.style.display = "none";
+
+      };
+
+      function segunda(){
+        console.log("function segunda running");
+        buttonSec.style.color = "red";
+        lineaUno.style.display = "none";
+        lineaDos.style.display = "block";
+        lineaTres.style.display = "none";
+
+      };
+
+      function tercera(){
+        console.log("function tercera running");
+        buttonThi.style.color = "red";
+        lineaUno.style.display = "none";
+        lineaDos.style.display = "none";
+        lineaTres.style.display = "block";
+
+      };
+
+      buttonFirst.addEventListener("click", primera);
+      buttonSec.addEventListener("click", segunda);
+      buttonThi.addEventListener("click", tercera);
     </script>
 
 </body>
