@@ -1,6 +1,8 @@
 // console.log("hello")
 // setTimeout(() => console.log('Hello World'), 1000);
 
+// setTimeout(()=>console.log("hey honey"), 2000);
+
 // // Promise
 // function foo() {
 //     return new Promise((resolve) => {
@@ -11,7 +13,16 @@
 //   foo()
 //    .then((value) => console.log(value)) // Hello Dio
 
-// Async 
+// function dospordos(){
+//   return new Promise(
+//     function(total){total("2x2")} 
+//   )
+// }
+
+// dospordos()
+//   .then((total)=>{console.log(total)});
+
+// Async is a very simple way to write a Promise 
 
     // async function foo() {
     // return 'Hello async';
@@ -20,7 +31,13 @@
     // foo()
     // .then((value) => console.log(value)) // Hello async
 
-// // Await
+    // async function dospordos(){
+    //   return "2 x 2";
+    // }
+
+    // dospordos().then(function (valor){console.log(valor)})
+
+// // Await pauses current function and waits for the result of another function to be returned
     function foo() {
         return new Promise((resolve) => {
           setTimeout(() => resolve('Hello await'), 1000)
