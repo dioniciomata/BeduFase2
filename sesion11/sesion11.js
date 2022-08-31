@@ -160,38 +160,50 @@
 
 
 function promiseAll(promises) {
+
+  let arreglo = [];
   
   return new Promise((resolve, reject) => {
     // espera a que todas las promesas del arreglo se resuelvan
     // retorna un arreglo con los resultados de cada promesa
     // si una promesa falla, la promesa mayor se rechaza, ignorar el resto
-    const arreglo = promises;
-    console.log(arreglo[0]); 
 
-  arreglo[0]
-   .then(results=>{console.log(results)
-    return arreglo[1]})
-    .then(results=>{console.log(results)
-      return arreglo[2]})
-      .then(results=>{console.log(results)})
+    try{
+      function resuelve(promesa){
+        return new Promise((resolve, reject) =>{
+            resolve(promesa);
+            reject("X"); 
+        })
+      }
+  
+      promises.forEach(promise => {
+        resuelve(promise)
+        .catch(result => {
+          // console.log(result)
+          arreglo.push(result)
+        })
+        .then(result => {
+          arreglo.push(result)
+          // console.log(arreglo)
+          return arreglo;
+        })
+        .then(arreglo => {
+          if (promises.length === arreglo.length){
+            resolve(arreglo);
+          } else if (arreglo[0] === "X") {
+            // console.log("arreglo[0] es X")
+            reject(arreglo[0]);
+          } 
+        })
 
+      })
 
+    }
 
-    resolve(arreglo);
-    reject();
-    })
-    
+    catch(err){console.log("Rechazado")};
 
-    // function resolver(promesa){
-    //   return new Promise((resolve)=>{
-    //     resolve(console.log(promesa));
-    //   });
-    // }
-    // resolver(promises)
-    // .then(result =>{console.log(result)});
-
-    // return arreglo;
-  }
+  })
+}
 
 function soon(value) {
   return new Promise(resolve => {
@@ -200,15 +212,22 @@ function soon(value) {
 }
 
 // Test cases
-// promiseAll([])
-//   .then(results => {
-//     console.log('Expected result []: ', results)
-//   })
+promiseAll([])
+  .then(results => {
+    console.log('Expected result []: ', results)
+  })
 
 promiseAll([soon(1), soon(2), soon(3)])
   .then(results => {
-    console.log('Expected result [1, 2, 3]: ', results)
+  console.log('Expected result [1, 2, 3]: ', results)
+  return promiseAll([soon(1), Promise.reject('X'), soon(3)])
+  .then(results => {
+    console.log('We should not get here')
   })
+  .catch(error => {
+    console.log('Expected error X: ', error)
+  })
+})
 
 // promiseAll([soon(1), Promise.reject('X'), soon(3)])
 //   .then(results => {
